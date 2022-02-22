@@ -1,0 +1,25 @@
+{
+  "name": "to-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.25.0",
+    "chalk": "^5.0.0",
+    "commander": "^9.0.0",
+    "conf": "^10.1.1",
+    "request": "^2.88.2",
+    "unzipper": "^0.10.11"
+  },
+  "bin": {
+    "suni": "./index.js"
+  },
+  "devDependencies": {
+    "@types/unzipper": "^0.10.5"
+  }
+}
