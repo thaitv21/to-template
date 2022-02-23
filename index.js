@@ -13,7 +13,7 @@ program.command('model')
   .action(createModel);
 
 program.command('repo')
-  .argument('<repo_name>', 'Name of repository')
+  .argument('<model_name>', 'Name of model')
   .description('Create repository')
   .action(createRepository);
 
