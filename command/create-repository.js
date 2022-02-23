@@ -19,6 +19,12 @@ async function generateRepo(name) {
 }
 
 async function createRepository(name) {
+  const cwd = process.cwd();
+  if (!fileExists(`${cwd}/repositories`)) {
+    console.log('Could not found `repositories` directory. You must run under root of service!');
+    console.log('Exit!');
+    return;
+  }
   await Promise.all([
     generateInterface(name),
     generateRepo(name),

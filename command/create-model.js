@@ -1,5 +1,5 @@
 const fs = require('fs').promises;
-const {get, lowerCaseFirstLetter} = require('../utils/utils');
+const {get, lowerCaseFirstLetter, fileExists} = require('../utils/utils');
 
 const root = process.cwd();
 const modelDir = `${root}/models`;
@@ -25,6 +25,12 @@ async function generateDAO(model, type) {
 }
 
 async function createModel(model, type) {
+  const cwd = process.cwd();
+  if (!fileExists(`${cwd}/models`)) {
+    console.log('Could not found `models` directory. You must run under root of service!');
+    console.log('Exit!');
+    return;
+  }
   await Promise.all([
     generateModelContent(model),
     generateDAO(model, type)

@@ -36,6 +36,12 @@ async function generateImpl(filename, content) {
 }
 
 async function createCLRUDUseCase(model) {
+  const cwd = process.cwd();
+  if (!fileExists(`${cwd}/useCases`)) {
+    console.log('Could not found `useCases` directory. You must run under root of service!');
+    console.log('Exit!');
+    return;
+  }
   const classnames = [
     'CreateModelNameUseCase',
     'DeleteModelNameUseCase',
@@ -57,6 +63,12 @@ async function createCLRUDUseCase(model) {
 }
 
 async function createSingleUseCase(name) {
+  const cwd = process.cwd();
+  if (!fileExists(`${cwd}/useCases`)) {
+    console.log('Could not found `useCases` directory. You must run under root of service!');
+    console.log('Exit!');
+    return;
+  }
   const contentInterface = await fs.readFile('../template/UseCase.ts');
   const contentInterfaceToWrite = contentInterface.replace(new RegExp('UseCase', 'g'), `${name}UseCase`);
   await generateInterface(`${name}UseCase`, contentInterfaceToWrite);

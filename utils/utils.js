@@ -2,7 +2,7 @@ const {githubUrl, templateVersion} = require('../config/config');
 const request = require('request');
 const { resolve } = require('path');
 const fs = require('fs').promises;
-const {createWriteStream, createReadStream} = require('fs');
+const {createWriteStream, createReadStream, existsSync} = require('fs');
 const {Extract} = require('unzipper');
 
 
@@ -28,11 +28,7 @@ exports.lowerCaseFirstLetter = function(str) {
 
 exports.downloadFile = async function(url, filename) {
   return new Promise((resolve, reject) => {
-    request.get(url).on('response', function(response) {
-      console.log(response.statusCode) // 200
-      console.log(response.headers['content-type']);
-      resolve();
-    }).pipe(createWriteStream(filename));
+    request.get(url).on('end', function() {resolve()}).pipe(createWriteStream(filename));
   });
 }
 
@@ -43,4 +39,8 @@ exports.createDir = async function(dir) {
 exports.unzip = async function(zipFile, dest) {
   console.log('unzip', zipFile, dest);
   await createReadStream(zipFile).pipe(Extract({ path: dest })).on('entry', entry => entry.autodrain()).promise();
+}
+
+exports.fileExists = function(path) {
+  return existsSync(path);
 }
