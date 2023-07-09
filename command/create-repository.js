@@ -1,5 +1,5 @@
 const fs = require('fs').promises;
-const {get, lowerCaseFirstLetter} = require('../utils/utils');
+const {get, lowerCaseFirstLetter, fileExists} = require('../utils/utils');
 
 const root = process.cwd();
 const repoDir = `${root}/repositories`;

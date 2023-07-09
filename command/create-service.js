@@ -1,5 +1,5 @@
 const { templateVersion, releaseUrl } = require("../config/config");
-const { downloadFile, unzip, lowerCaseFirstLetter } = require("../utils/utils");
+const { downloadFile, unzip, lowerCaseFirstLetter, fileExists } = require("../utils/utils");
 const fs = require('fs').promises;
 const { execSync } = require("child_process");
 const inquirer = require('inquirer');
