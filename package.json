@@ -1,6 +1,6 @@
 {
-  "name": "suni-cli",
-  "version": "1.0.5",
+  "name": "tobackend-cli",
+  "version": "1.0.6",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -19,7 +19,7 @@
     "unzipper": "^0.10.11"
   },
   "bin": {
-    "suni": "./index.js"
+    "tobackend": "./index.js"
   },
   "devDependencies": {
     "@types/unzipper": "^0.10.5"

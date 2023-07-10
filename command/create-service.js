@@ -14,7 +14,9 @@ async function readDir(dir, modelName) {
       await readDir(path, modelName);
     } else {
       const content = await fs.readFile(path, 'utf8');
-      const contentToWrite = content.replace(new RegExp('ModelName', 'g'), modelName).replace(new RegExp('modelName', 'g'), lowerCaseFirstLetter(modelName));
+      const contentToWrite = content.replace(new RegExp('ModelName', 'g'), modelName)
+                                    .replace(new RegExp('modelName', 'g'), lowerCaseFirstLetter(modelName))
+                                    .replace(new RegExp('MODEL_NAME', 'g'), modelName.toUpperCase());
       await fs.writeFile(path, contentToWrite);
       await fs.rename(path, path.replace('ModelName', modelName));
     }
