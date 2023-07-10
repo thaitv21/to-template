@@ -48,7 +48,7 @@ async function createService(name, {model}) {
   await readDir(`${cwd}/${name}`, model);
   await fs.unlink(zipFile);
   console.log('Install dependencies...');
-  execSync(`cd ${cwd}/${name} && npm install`);
+  execSync(`cd ${cwd}/${name} && yarn install`);
   console.log('Done!');
 }
 
